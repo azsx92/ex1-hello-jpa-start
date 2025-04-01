@@ -1,1 +1,1 @@
-# Java_ORM_JPA
+# ex1-hello-jpa-start
