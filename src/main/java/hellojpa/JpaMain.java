@@ -19,14 +19,11 @@ public class JpaMain {
         // 그리고 나서 transaction이 커밋이 되는 것이다.
         try {
             //영속
+            Member member = new Member();
+            member.setUsername("C");
 
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA");
 
-            em.close();
-
-            Member member2 = em.find(Member.class, 150L);
-
+            em.persist(member);
             System.out.println("-======================-");
             // 커밋하는 순간 데이터 베이스에 INSERT SQL을 보낸다.
             tx.commit();
