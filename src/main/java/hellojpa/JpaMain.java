@@ -20,10 +20,11 @@ public class JpaMain {
         try {
             //영속
 
-            Member member = new Member(170L, "member200");
-            em.persist(member);
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
 
-            em.flush();
+            em.detach(member);
+
             System.out.println("-======================-");
             // 커밋하는 순간 데이터 베이스에 INSERT SQL을 보낸다.
             tx.commit();
