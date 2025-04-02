@@ -13,14 +13,20 @@ public class JpaMain {
         EntityManager em = emf.createEntityManager();
         //code
         EntityTransaction tx = em.getTransaction();
+        // 엔티티 매니저는 데이터 변경시 트랜잭션을 시작해야 한다.
         tx.begin();
 
         try {
+            //영속
+            Member member1 = new Member(150L, "A");
+            Member member2 = new Member(160L, "B");
 
-            Member findMember1 = em.find(Member.class, 101L);
-            Member findMember2 = em.find(Member.class, 101L);
-            System.out.println("result = "  + (findMember1 == findMember2));
+            em.persist(member1);
+            em.persist(member2);
+            // 여기까지 INSERT SQL을 데이터베이스에 보내지 않는다.
 
+            System.out.println("-======================-");
+            // 커밋하는 순간 데이터 베이스에 INSERT SQL을 보낸다.
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
