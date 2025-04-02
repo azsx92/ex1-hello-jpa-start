@@ -18,11 +18,9 @@ public class JpaMain {
 
         try {
             //영속
-            Member member1 = new Member(150L, "A");
-            Member member2 = new Member(160L, "B");
 
-            em.persist(member1);
-            em.persist(member2);
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZ");
             // 여기까지 INSERT SQL을 데이터베이스에 보내지 않는다.
 
             System.out.println("-======================-");
