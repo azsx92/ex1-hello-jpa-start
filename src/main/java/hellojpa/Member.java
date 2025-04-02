@@ -11,8 +11,8 @@ public class Member {
     private Long id;
 
     private String name;
-    private int age;
-    
+    private int gogo;
+
     public Member() {}
     public Member(Long id, String name) {
         this.id = id;
