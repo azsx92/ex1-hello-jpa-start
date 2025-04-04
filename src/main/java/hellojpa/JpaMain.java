@@ -19,24 +19,17 @@ public class JpaMain {
         // 그리고 나서 transaction이 커밋이 되는 것이다.
         try {
 
-            Team team = new Team();
-            team.setName("TeamA");
-//            team.getMembers().add(member);
-            em.persist(team);
-
             Member member = new Member();
             member.setName("member1");
-            member.changeTeam(team);
+
             em.persist(member);
 
-           // em.flush();
-           // em.clear();
+            Team team = new Team();
+            team.setName("teamA");
+            team.getMembers().add(member);
 
-            Team findTeam = em.find(Team.class, team.getId());
-            List<Member> members = findTeam.getMembers();
-            System.out.println("============");
-            System.out.println("members =" + findTeam);
-            System.out.println("============");
+            em.persist(team);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
